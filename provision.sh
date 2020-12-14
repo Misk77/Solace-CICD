@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SOLACE_IP=http://mr10ach0rc2pfz.messaging.solace.cloud:9443
+SOLACE_IP=wss://mr10ach0rc2pfz.messaging.solace.cloud:443
 CRED=solace-cloud-client:u7hvj9qhisp96loh46d2jcoh51
 
 CREATE_VPN="

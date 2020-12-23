@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SOLACE_IP=13.53.81.224:8080
-CRED=<ansible:ansible
+CRED=ansible:ansible
 
 CREATE_VPN="
 <rpc semp-version="soltr/7_1_1">

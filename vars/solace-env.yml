@@ -1,7 +1,7 @@
 ---
 #message-vpn
 message_vpn:
- msgVpnName: "srAwesome_vpn"
+ msgVpnName: "Misk77_vpn"
  authenticationBasicType: "internal"
  enabled: true
  maxConnectionCount: 60

@@ -4,7 +4,7 @@ SOLACE_IP=13.53.81.224:8080
 CRED=ansible:ansible
 
 CREATE_VPN="
-<rpc semp-version="soltr/9.7">
+<rpc semp-version="soltr/9_7">
 <create>
 <message-vpn>
 <vpn-name>Solace-CICD</vpn-name>
@@ -13,7 +13,7 @@ CREATE_VPN="
 </rpc>
 "
 START_VPN="
-<rpc semp-version="soltr/7_1_1"
+<rpc semp-version="soltr/9_7"
 <message-vpn>
 <vpn-name>Solace-CICD</vpn-name>
 <no>

@@ -1,0 +1,26 @@
+---
+- name: Compose SEMPv2 request payload for Client Profile "{{ cp.clientProfileName }}"
+  template: src=templates/create-client-profile.json.j2 dest=files/create-client-profile.json
+
+- name: Create Client Profile "{{ cp.clientProfileName }}"
+  uri:
+   url: "http://{{ mgmt_host }}:{{ mgmt_port }}/SEMP/v2/config/msgVpns/{{ vpn }}/clientProfiles"
+   method: POST
+   user: "{{ semp_username }}"
+   password: "{{ semp_password }}"
+   headers:
+    Content-Type: "application/json"
+   body: '{{ lookup("file","files/create-client-profile.json") }}'
+   body_format: json
+   force_basic_auth: yes
+   status_code: 200
+   return_content: yes
+  register: result
+  ignore_errors: True
+  retries: 3
+  delay: 1
+
+- name: Error in Client Profile creation?
+  debug:
+   var: result.json.meta.error.status
+  when: result.json.meta.responseCode != 200

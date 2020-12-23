@@ -1,0 +1,87 @@
+---
+#message-vpn
+message_vpn:
+ msgVpnName: "srAwesome_vpn"
+ authenticationBasicType: "internal"
+ enabled: true
+ maxConnectionCount: 60
+ maxSubscriptionCount: 200
+ eventLargeMsgThreshold: 2048
+ maxEgressFlowCount: 100
+ maxEndpointCount: 100
+ maxIngressFlowCount: 100
+ maxTransactedSessionCount: 100
+ maxTransactionCount: 100
+ maxMsgSpoolUsage: 1000
+
+#client-profiles
+client_profiles:
+- clientProfileName: "foo_cp"
+  allowGuaranteedMsgReceiveEnabled: true
+  allowGuaranteedMsgSendEnabled: true
+- clientProfileName: "bar_cp"
+  allowGuaranteedMsgReceiveEnabled: true
+  allowGuaranteedMsgSendEnabled: true
+
+#acl-profiles
+acl_profiles:
+- aclProfileName: "foo_acl"
+  clientConnectDefaultAction: "allow"
+  publishTopicDefaultAction: "disallow"
+  subscribeTopicDefaultAction: "allow"
+- aclProfileName: "bar_acl"
+  clientConnectDefaultAction: "allow"
+  publishTopicDefaultAction: "disallow"
+  subscribeTopicDefaultAction: "disallow"
+
+#client-usernames
+client_usernames:
+- clientUsername: "foo_cu"
+  clientProfileName: "foo_cp"
+  aclProfileName: "foo_acl"
+  password: "foo_cu"
+  enabled: true
+- clientUsername: "bar_cu"
+  clientProfileName: "bar_cp"
+  aclProfileName: "bar_acl"
+  password: "bar_cu"
+  enabled: true
+
+#queues
+queues:
+- queueName: queue1
+  subscription_topics:
+  - "topic/1/>"
+  - "topic/2/>"
+  - "topic/3/>"
+  - "topic/4/>"
+  accessType: "non-exclusive"
+  owner: "foo_cu"
+  ingressEnabled: true
+  egressEnabled: true
+  permission: "consume"
+  maxMsgSpoolUsage: 100
+- queueName: queue2
+  subscription_topics:
+  - "topic/5/>"
+  - "topic/6/>"
+  - "topic/7/>"
+  - "topic/8/>"
+  accessType: "exclusive" 
+  owner: "bar_cu"
+  ingressEnabled: true
+  egressEnabled: true
+  permission: "read-only"
+  maxMsgSpoolUsage: 130
+- queueName: queue3
+  subscription_topics:
+  - "topic/5/>"
+  - "topic/6/>"
+  - "topic/7/>"
+  - "topic/8/>"
+  accessType: "exclusive" 
+  owner: "foo_cu"
+  ingressEnabled: true
+  egressEnabled: true
+  permission: "read-only"
+  maxMsgSpoolUsage: 250

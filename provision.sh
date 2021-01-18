@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SOLACE_IP=13.53.81.224:8080
+SOLACE_IP=13.49.65.139:8080
 CRED=ansible:ansible
 
 CREATE_VPN="
